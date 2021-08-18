@@ -1,6 +1,7 @@
 env:
   docker_username: ${{ secrets.DOCKER_USERNAME }}
   docker_password: ${{ secrets.DOCKER_PASSWORD }}
+
 name: Java CI
 on: push
 jobs:
@@ -56,7 +57,7 @@ jobs:
         with:
           name: code
           path: .
-      - run: export GIT_COMMIT="GA-$GITHUB_SHA" && chmod -x ci/build-docker.sh && chmod -x ci/push-docker.sh
-      - run: export GIT_COMMIT="GA-$GITHUB_SHA" && ci/build-docker.sh
-      - run: export GIT_COMMIT="GA-$GITHUB_SHA" && ci/push-docker.sh
+      - run: export GIT_COMMIT="GA-$GITHUB_SHA" && chmod +x ci/build-docker.sh && chmod +x ci/push-docker.sh
+      - run: export GIT_COMMIT="GA-$GITHUB_SHA" && ci/build-docker.sh && ci/push-docker.sh
+
       
