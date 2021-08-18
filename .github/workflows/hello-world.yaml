@@ -60,5 +60,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: robinlp1/Docker-github-action-test:latest
+          tags: robinlp1/docker-github-action-test:latest
 
