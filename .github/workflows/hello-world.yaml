@@ -56,14 +56,9 @@ jobs:
         with:
           name: code
           path: .
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
-        with:
-          username: ${{ env.docker_username }}
-          password: ${{ env.docker_password }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          push: true
-          tags: robinlp1/docker-github-action-test:latest
-
+      - run: | 
+        export GIT_COMMIT="GA-$GITHUB_SHA"
+        ci/build-docker.sh
+      - run: | 
+        export GIT_COMMIT="GA-$GITHUB_SHA"
+        ci/push-docker.sh
